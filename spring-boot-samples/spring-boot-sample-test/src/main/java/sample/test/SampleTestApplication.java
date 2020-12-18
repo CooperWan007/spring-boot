@@ -24,11 +24,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  *
  * @author Phillip Webb
  */
-@SpringBootApplication
+@SpringBootApplication // 使用SpringBootApplication注解，标注此程序为SpringBoot应用，通过它，可以开启自动配置的功能。
 public class SampleTestApplication {
-
-	// NOTE: this application will intentionally not start without MySQL, the test will
-	// still run.
 
 	public static void main(String[] args) {
 		SpringApplication.run(SampleTestApplication.class, args);

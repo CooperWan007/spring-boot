@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+		 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		 xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>org.springframework.boot</groupId>
 	<artifactId>spring-boot-build</artifactId>
@@ -12,6 +12,7 @@
 	<properties>
 		<revision>2.1.15.BUILD-SNAPSHOT</revision>
 		<main.basedir>${basedir}</main.basedir>
+		<disable.checks>true</disable.checks>
 	</properties>
 	<!-- Most elements are in profiles so they are stripped out during maven-flatten -->
 	<profiles>
@@ -57,7 +58,8 @@
 								<configuration>
 									<skip>${disable.checks}</skip>
 									<configLocation>src/checkstyle/checkstyle.xml</configLocation>
-									<suppressionsLocation>src/checkstyle/checkstyle-suppressions.xml</suppressionsLocation>
+									<suppressionsLocation>src/checkstyle/checkstyle-suppressions.xml
+									</suppressionsLocation>
 									<includeTestSourceDirectory>true</includeTestSourceDirectory>
 									<propertyExpansion>main.basedir=${main.basedir}</propertyExpansion>
 									<encoding>UTF-8</encoding>
@@ -72,12 +74,15 @@
 								<configuration>
 									<skip>${disable.checks}</skip>
 									<configLocation>src/checkstyle/nohttp-checkstyle.xml</configLocation>
-									<suppressionsLocation>src/checkstyle/nohttp-checkstyle-suppressions.xml</suppressionsLocation>
+									<suppressionsLocation>src/checkstyle/nohttp-checkstyle-suppressions.xml
+									</suppressionsLocation>
 									<propertyExpansion>main.basedir=${main.basedir}</propertyExpansion>
 									<encoding>UTF-8</encoding>
 									<sourceDirectories>${basedir}</sourceDirectories>
 									<includes>**/*</includes>
-									<excludes>**/.git/**/*,**/target/**/,**/.flattened-pom.xml,**/*.class,**/spring-boot-gradle-plugin/build/**</excludes>
+									<excludes>
+										**/.git/**/*,**/target/**/,**/.flattened-pom.xml,**/*.class,**/spring-boot-gradle-plugin/build/**
+									</excludes>
 								</configuration>
 								<goals>
 									<goal>check</goal>
