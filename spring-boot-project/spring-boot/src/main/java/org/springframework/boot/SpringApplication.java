@@ -470,9 +470,11 @@ public class SpringApplication {
 	}
 
 	private void refreshContext(ConfigurableApplicationContext context) {
+		// <1> 开启（刷新）Spring 容器
 		refresh(context);
 		if (this.registerShutdownHook) {
 			try {
+				// <2> 注册 ShutdownHook 钩子
 				context.registerShutdownHook();
 			}
 			catch (AccessControlException ex) {
@@ -861,7 +863,10 @@ public class SpringApplication {
 	 * @param applicationContext the application context to refresh
 	 */
 	protected void refresh(ApplicationContext applicationContext) {
+		// 断言，判断 applicationContext 是 AbstractApplicationContext 的子类
 		Assert.isInstanceOf(AbstractApplicationContext.class, applicationContext);
+
+		// 启动（/刷新） AbstractApplicationContext
 		((AbstractApplicationContext) applicationContext).refresh();
 	}
 
